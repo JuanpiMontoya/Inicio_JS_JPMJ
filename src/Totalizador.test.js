@@ -35,4 +35,8 @@ describe("Totalizaor", () => {
   it("Mostrar precio total con impuesto y descuento de 10000", () => {
     expect(metodos.calcularPrecioTotal(115,97,"UT")).toEqual(10781.3075);
   });
+
+  it("Mostrar precio total con impuesto y descuento de 30000", () => {
+    expect(metodos.calcularPrecioTotal(225,140,"CA")).toEqual(29373.75);
+  });
 });
