@@ -32,9 +32,13 @@ function calcularPrecioTotal(cant,precio,estado){
   const PrecioItem = calcularPrecio(cant,precio)
   const Impuesto = calcularImpuesto_y_Descuento(cant, precio, Totalizador(estado))
   let Descuento = 0;
-  if(PrecioItem >= 1000)
+  if(PrecioItem >= 1000 && PrecioItem < 3000)
   {
-    Descuento = 3.00
+    Descuento = 3
+  }
+  else
+  {
+    Descuento = 5
   }
   return  PrecioItem + Impuesto - calcularImpuesto_y_Descuento(cant, precio, Descuento);
 }
