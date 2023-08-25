@@ -40,13 +40,17 @@ function calcularPrecioTotal(cant,precio,estado){
   {
     Descuento = 5
   }
+  else if (PrecioItem >= 7000 && PrecioItem < 10000)
+  {
+    Descuento = 7
+  }
   else if (PrecioItem < 1000)
   {
-    Descuento = 0
+    
   }
   else
   {
-    Descuento = 7
+    Descuento = 10
   }
   return  PrecioItem + Impuesto - calcularImpuesto_y_Descuento(cant, precio, Descuento);
 }
