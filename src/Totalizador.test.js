@@ -2,7 +2,7 @@ import metodos from "./Totalizador"
 
 describe("Totalizaor", () => {
   it("Mostrar porcentaje por estado", () => {
-    expect(metodos.Totalizador("CA")).toEqual(8.25);
+    expect(metodos.valorEstado("CA")).toEqual(8.25);
   }); 
 
   it("Mostrar precio neto", () => {
@@ -12,7 +12,7 @@ describe("Totalizaor", () => {
   // Con estas 2 pruebas se pueden comprobar si los valores del impuesto y del precio total con el impuesto son los correctos, en base a cualquier estado que ingresemos segun lo pedido en el excel.
   //1 
   it("Mostrar precio impuesto", () => {
-    expect(metodos.calcularImpuesto_y_Descuento(10,10,metodos.Totalizador("CA"))).toEqual(8.25);
+    expect(metodos.calcularImpuesto_y_Descuento(10,10,metodos.valorEstado("CA"))).toEqual(8.25);
   });
   //2
   it("Mostrar precio total con impuesto", () => {

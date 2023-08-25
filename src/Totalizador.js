@@ -1,4 +1,4 @@
-function Totalizador(estado){
+function valorEstado(estado){
   let impuesto = 0;
   switch(estado){
     case "CA":
@@ -28,37 +28,44 @@ function calcularImpuesto_y_Descuento(cant, precio, porcentaje){
   return calcularPrecio(cant,precio)*(porcentaje/100)
 }
 
-function calcularPrecioTotal(cant,precio,estado){
+function valorDescuento(cant,precio)
+{
+  let descuento = 0
   const PrecioItem = calcularPrecio(cant,precio)
-  const Impuesto = calcularImpuesto_y_Descuento(cant, precio, Totalizador(estado))
-  let Descuento = 0;
   if(PrecioItem >= 1000 && PrecioItem < 3000)
   {
-    Descuento = 3
+    descuento = 3
   }
   else if (PrecioItem >= 1000 && PrecioItem < 7000)
   {
-    Descuento = 5
+    descuento = 5
   }
   else if (PrecioItem >= 7000 && PrecioItem < 10000)
   {
-    Descuento = 7
+    descuento = 7
   }
   else if (PrecioItem >= 10000 && PrecioItem < 30000)
   {
-    Descuento = 10
+    descuento = 10
   }
   else if (PrecioItem < 1000)
   {
-    Descuento = 0
+    descuento = 0
   }
   else
   {
-    Descuento = 15
+    descuento = 15
   }
-  return  PrecioItem + Impuesto - calcularImpuesto_y_Descuento(cant, precio, Descuento);
+  return descuento
 }
 
-const metodos = {calcularPrecio, Totalizador,calcularImpuesto_y_Descuento,calcularPrecioTotal};
+function calcularPrecioTotal(cant,precio,estado){
+  const PrecioItem = calcularPrecio(cant,precio)
+  const Impuesto = calcularImpuesto_y_Descuento(cant, precio,  valorEstado(estado))
+  const Descuento = calcularImpuesto_y_Descuento(cant, precio, valorDescuento(cant,precio)) ;
+  return  PrecioItem + Impuesto - Descuento;
+}
+
+const metodos = {calcularPrecio,valorEstado,calcularImpuesto_y_Descuento,valorDescuento,calcularPrecioTotal};
 
 export default metodos;
