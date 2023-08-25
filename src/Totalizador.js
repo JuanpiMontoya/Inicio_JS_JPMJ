@@ -24,14 +24,21 @@ function calcularPrecio(cant,precio){
   return cant*precio;
 }
 
-function calcularImpuesto(cant, precio, estado){
-  return calcularPrecio(cant,precio)*(Totalizador(estado)/100)
+function calcularImpuesto_y_Descuento(cant, precio, porcentaje){
+  return calcularPrecio(cant,precio)*(porcentaje/100)
 }
 
 function calcularPrecioTotal(cant,precio,estado){
-  return calcularPrecio(cant,precio)+calcularImpuesto(cant, precio, estado);
+  const PrecioItem = calcularPrecio(cant,precio)
+  const Impuesto = calcularImpuesto_y_Descuento(cant, precio, Totalizador(estado))
+  let Descuento = 0;
+  if(PrecioItem >= 1000)
+  {
+    Descuento = 3.00
+  }
+  return  PrecioItem + Impuesto - calcularImpuesto_y_Descuento(cant, precio, Descuento);
 }
 
-const metodos = {calcularPrecio, Totalizador,calcularImpuesto,calcularPrecioTotal};
+const metodos = {calcularPrecio, Totalizador,calcularImpuesto_y_Descuento,calcularPrecioTotal};
 
 export default metodos;
